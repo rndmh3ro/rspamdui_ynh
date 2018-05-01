@@ -9,12 +9,6 @@ if [[ ! $? -eq 0 ]]; then
   exit 1
 fi
 
-# Check port availability
-sudo yunohost app checkport 11334
-if [[ ! $? -eq 0 ]]; then
-  exit 1
-fi
-
 # Configure Nginx and reload
 # Removing trailing '/' in path to handle both subdir and subdomain installs.
 sed -i "s@PATHTOCHANGE@${path%/}@g" ../conf/nginx.conf
